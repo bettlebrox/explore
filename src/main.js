@@ -11,6 +11,7 @@ import { registerPlugins } from '@/plugins'
 import App from './App.vue'
 import Landing from './components/Landing.vue'
 import Theme from './components/Theme.vue'
+import About from './components/About.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 
@@ -19,6 +20,7 @@ const router = createRouter({
   routes: [
     { path: '/', component: Landing }, 
     { path: '/theme/:id', component: Theme },
+    { path: '/about', component: About},
   ] 
 })
 
