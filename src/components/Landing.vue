@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, watchEffect } from 'vue'
 
 let id = 0
 const newSum = ref('')
@@ -21,10 +21,24 @@ const rules = [
     return 'Theme is required'
   },
 ]
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+const THEME_API_URL = 'http://127.0.0.1:3000/api/themes'
+
+const top_themes = ref([])
+const latest_themes = ref([])
+
+watchEffect(async () => {
+latest_themes.value = await (await fetch(THEME_API_URL + '?sortField=createdDate')).json()
+})
+
+watchEffect(async () => {
+top_themes.value = await (await fetch(THEME_API_URL + '?sortField=top')).json()
+})
+
+
 </script>
 <template>
-  
+
   <v-container class="fill-height">
     <v-responsive>
       <v-sheet height="200px">
@@ -36,24 +50,16 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
       </v-sheet>
       <v-row>
         <v-col cols="6">
-          <v-card title="Recent Themes" outlined>
-            <v-list>
-              <v-list-item v-for="theme in summary" :key="theme.id" :title="theme.title" :to="'theme/' + theme.title"
-                link>
-                <v-list-item-subtitle>{{ theme.summary }}</v-list-item-subtitle>
-              </v-list-item>
-            </v-list>
-            <li>
-              <v-form @submit.prevent="onAddSum">
-                <v-text-field variant="outlined" v-model="newSum" placeholder="new theme" :rules="rules" />
-                <v-btn class="mt-2" type="submit" block>Add</v-btn>
-              </v-form>
-            </li>
-          </v-card>
+          <ThemeList :themes="latest_themes" heading="Latest Themes" />
+          <v-form @submit.prevent="onAddSum">
+            <v-text-field variant="outlined" v-model="newSum" placeholder="new theme" :rules="rules" />
+            <v-btn class="mt-2" type="submit" block>Add</v-btn>
+          </v-form>
         </v-col>
         <v-col cols="6">
-          <ThemeList :themes="summary" heading="Top Themes" />
+          <ThemeList :themes="top_themes" heading="Top Themes" />
         </v-col>
+
       </v-row>
 
     </v-responsive>

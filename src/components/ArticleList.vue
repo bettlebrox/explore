@@ -1,9 +1,10 @@
 <template>
     <v-card :title="heading" outlined>
             <v-list>
-              <v-list-item v-for="theme in themes" :key="theme.id" :title="theme.original_title" :to="'theme/' + theme.title"
+              <v-list-item v-for="article in articles" :key="article.id" :title="article.original_title" :href="article.url"
                 link>
-                <v-list-item-subtitle>{{ theme.summary }}</v-list-item-subtitle>
+                <v-list-item-subtitle wrap>{{ article.summary }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ article.url }}</v-list-item-subtitle>
               </v-list-item>
             </v-list>
           </v-card>
@@ -11,7 +12,7 @@
 <script>
 export default {
   props: {
-    themes: {
+    articles: {
       type: Array,
       required: true
     },
