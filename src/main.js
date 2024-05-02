@@ -12,6 +12,7 @@ import App from './App.vue'
 import Landing from './components/Landing.vue'
 import Theme from './components/Theme.vue'
 import About from './components/About.vue'
+import Articles from './components/Articles.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 
@@ -19,8 +20,9 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: Landing }, 
-    { path: '/theme/:id', component: Theme },
+    { path: '/theme/:id', component: Theme, name: 'theme' },
     { path: '/about', component: About},
+    { path: '/articles', component: Articles }
   ] 
 })
 
