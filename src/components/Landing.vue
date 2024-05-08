@@ -3,11 +3,6 @@ import { ref, watchEffect } from 'vue'
 
 let id = 0
 const newSum = ref('')
-const summary = ref([
-  { 'id': id++, 'title': 'AI Agents', summary: 'The common theme among the texts is the introduction and discussion of AI software engineers, such as Devin, and their impact on software development.' },
-  { 'id': id++, 'title': 'Leo Varadkar', summary: 'Leo Varadkar has resigned as prime minister of Ireland' },
-  { 'id': id++, 'title': 'Whats better react or vue?', summary: 'The never ending discussion about which javascript framework is better' }
-])
 async function onAddSum(event) {
   console.log("adding summary")
   const results = await event
