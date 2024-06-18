@@ -1,7 +1,9 @@
 <template>
     <v-app-bar>
-        <v-img height="150" src="@/assets/dassie_trans.png" position="left" />
-        <v-toolbar-title position="left">Dassie, your research agent</v-toolbar-title>
+        <a href="/" style="height: 50px;width: 50px;">
+            <v-img height="150" src="@/assets/dassie_trans.png" position="left"/>
+        </a>
+        <v-app-bar-title position="left">Dassie, your research agent</v-app-bar-title>
         <v-toolbar-items>
             <v-btn to="/" color="primary" text small>
                 Home

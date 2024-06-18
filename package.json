@@ -15,8 +15,12 @@
     "@mdi/font": "7.0.96",
     "@vuelidate/core": "^2.0.3",
     "@vuelidate/validators": "^2.0.4",
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "posthog-js": "^1.138.3",
     "roboto-fontface": "*",
     "vue": "^3.4.0",
+    "vue-markdown-render": "^2.2.1",
     "vue-router": "^4.3.0",
     "vuetify": "^3.5.0"
   },

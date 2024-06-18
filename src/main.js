@@ -6,7 +6,7 @@
 
 // Plugins
 import { registerPlugins } from '@/plugins'
-
+import posthogPlugin from "./plugins/posthog";
 // Components
 import App from './App.vue'
 import Landing from './components/Landing.vue'
@@ -14,7 +14,6 @@ import Theme from './components/Theme.vue'
 import About from './components/About.vue'
 import Articles from './components/Articles.vue'
 import { createRouter, createWebHistory } from 'vue-router'
-
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,4 +32,5 @@ const app = createApp(App)
 
 registerPlugins(app)
 app.use(router)
+app.use(posthogPlugin)
 app.mount('#app')
